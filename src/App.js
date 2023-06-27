@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import Home from "./screens/Home";
+import { Route, Switch } from "react-router-dom";
+import Login from "./screens/Login";
+import Signup from "./screens/Signup";
+import '../node_modules/bootstrap/dist/js/bootstrap.bundle'
+import { CartProvider } from "./components/ContextReducer";
+import MyOrder from "./screens/MyOrder";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+      {/* <h1>Hare Krishna</h1> */}
+      <CartProvider>
+        <Switch>
+          <Route path='/login'>
+            <Login></Login>
+          </Route>
+          <Route path='/createuser'>
+            <Signup></Signup>
+          </Route>
+          <Route path='/myOrder'>
+            <MyOrder/>
+          </Route>
+          <Route path='/'>
+            <Home />
+          </Route>
+        </Switch>
+      </CartProvider>
     </div>
   );
 }
